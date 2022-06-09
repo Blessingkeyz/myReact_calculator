@@ -1,4 +1,5 @@
 import React, { Component } from 'react' ;
+import evaluate from 'evaluator.js';
 import CalculatorTitle from './CalculatorTitle' ;
 import OutputScreen from './OutputScreen' ;
 import Button from './Button';
@@ -20,7 +21,7 @@ class Calculator extends Component {
         if (this.state.question !== ''){
           var ans = '';
           try{
-              ans= eval(this.state.question)
+              ans= evaluate(this.state.question)
             }
             catch(err){
               this.setState({answer : "Math Error"});
@@ -30,7 +31,9 @@ class Calculator extends Component {
             else
               this.setState({answer: ans , question : ''});
             break;
-        }
+       
+          }
+        break;  
       }
       case 'Clear' :{
         this.setState({question: '' , answer : ''});
